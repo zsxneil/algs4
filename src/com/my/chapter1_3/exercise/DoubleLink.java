@@ -28,8 +28,6 @@ public class DoubleLink<Item> {
         if (first == null) {
             first = node;
             last = node;
-            first.next = last;
-            last.prev = first;
         } else {
             node.next = first;
             first.prev = node;
@@ -44,8 +42,6 @@ public class DoubleLink<Item> {
         if (last == null) {
             last = node;
             first = node;
-            first.next = last;
-            last.prev = first;
         } else {
             last.next = node;
             node.prev = last;
