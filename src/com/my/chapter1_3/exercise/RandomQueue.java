@@ -2,13 +2,15 @@ package com.my.chapter1_3.exercise;
 
 import com.my.util.StdOut;
 
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Random;
 
 /**
  * 随机队列 1.3.35
  * Created by neil on 2017/10/16.
  */
-public class RandomQueue<Item> {
+public class RandomQueue<Item> implements Iterable<Item> {
 
     private int N;
     private Item[] a;
@@ -67,6 +69,48 @@ public class RandomQueue<Item> {
 
         for(int i=0;i<10;i++) {
             StdOut.print(queue.dequeu() + " ");
+        }
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new ListIterator();
+    }
+
+    private class ListIterator implements Iterator<Item> {
+
+        private int index;
+        private Random random;
+
+        public ListIterator() {
+            random = new Random();
+            index = 0;
+            randomSort();
+        }
+
+        private void randomSort() {
+            for(int i=0;i<N;i++) {
+                int randomIndex = i + random.nextInt(N - i);
+                Item temp = a[randomIndex];
+                a[randomIndex] = a[i];
+                a[i] = temp;
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < N;
+        }
+
+        @Override
+        public Item next() {
+            Item item = a[index ++];
+            return item;
+        }
+
+        @Override
+        public void remove() {
+
         }
     }
 }
