@@ -14,7 +14,6 @@ public class RandomQueue<Item> implements Iterable<Item> {
 
     private int N;
     private Item[] a;
-
     public RandomQueue() {
         N =0;
         a = (Item[]) new Object[1];
