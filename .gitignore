@@ -32,3 +32,4 @@ out
 gen
 
 *.txt
+!/src/com/my/chapter1_3/tobe.txt
